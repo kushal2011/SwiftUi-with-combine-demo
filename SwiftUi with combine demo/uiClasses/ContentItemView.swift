@@ -15,16 +15,17 @@ struct ContentItemView : View {
     
     var body: some View {
         HStack { //create view in horizontal stack
-            KFImage(URL(string: (self.user.imageUrl))!).resizable().clipShape(Circle()).frame(width: 70, height: 70) //used kingfisher library to load image from url
+            KFImage(URL(string: (self.user.picture.thumbnail!))!).resizable().clipShape(Circle()).frame(width: 70, height: 70) //used kingfisher library to load image from url
             VStack(alignment: .leading) { //create view in vertical stack with leading alignment
+
                 
-                Text(user.name)
-                Spacer() //adds space
+                Text(user.name.title + " " + user.name.first + " " + user.name.last)
+                Spacer()
                 
                 Text(user.email)
                 Spacer()
 
-                Text(user.phoneNum)
+                Text(user.cell)
                 Spacer()
 
             }.padding(.init(top: 2, leading: 8, bottom: 2, trailing: 8)) //adds padding
