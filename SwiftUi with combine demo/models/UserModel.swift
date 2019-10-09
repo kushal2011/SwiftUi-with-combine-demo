@@ -9,7 +9,7 @@
 import Foundation
 
 public struct UserModel :Identifiable {
-    public var id = UUID()
+    public var id = UUID() //created a unique id for each object , imp for identifing object
 
     let name,email,phoneNum,imageUrl:String
 
