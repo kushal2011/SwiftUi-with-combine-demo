@@ -13,10 +13,12 @@ public class UsersViewModel : ObservableObject {
     public let willChange = PassthroughSubject<UsersViewModel, Never>()
     @Published private(set) var users:usersList = [UserModel](){
         didSet {
+            //subscribers will get the list when data is changed
             willChange.send(self)
         }
     }
         
+    //calls random user api
         func fetchData() {
               let urlJSON = "https://randomuser.me/api/?results=10"
               guard let url = URL(string: urlJSON) else {return}
@@ -26,6 +28,8 @@ public class UsersViewModel : ObservableObject {
                 do {
                     let jsonDecoder = JSONDecoder()
                     let responseModel = try jsonDecoder.decode(Users.self, from: data)
+                    
+                    //imp make sure the value to list is assigned inside dispatchque
                     DispatchQueue.main.async {
                         self.users = responseModel.results!
                       }

@@ -34,4 +34,5 @@ public struct UserModel : Codable , Identifiable {
     }
 
 }
+//userList name will be used to refer to list of UserModels
 public typealias usersList = [UserModel]
